@@ -9,6 +9,7 @@ export class UnityProcessMonitor {
     private static readonly macProcessName = "Unity";
 
     public static async isUnityStillRunning(): Promise<boolean> {
+        console.log("platform : ", process.platform);
         const runningOnWindows = process.platform === 'win32';
         const results = await findProcess("name", runningOnWindows ? this.windowsProcessName : this.macProcessName);
         
