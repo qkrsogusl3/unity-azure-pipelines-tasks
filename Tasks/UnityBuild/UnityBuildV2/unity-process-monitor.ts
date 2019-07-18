@@ -11,7 +11,8 @@ export class UnityProcessMonitor {
     public static async isUnityStillRunning(): Promise<boolean> {
         const runningOnWindows = process.platform === 'win32';
         const results = await findProcess("name", runningOnWindows ? this.windowsProcessName : this.macProcessName);
-
+        
+        console.log("process result : ", results);
         // HACK / WORKAROUND:
         // find-process lib for some reason always returns 'node' as a running process, even though we are searching for processes with a 'Unity' substring.
         // So in case it's in the results array, we'll remove it first.
